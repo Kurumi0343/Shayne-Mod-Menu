@@ -11,11 +11,6 @@ Support Android 4.4.x up to Android S Preview. ARMv7, x86 and ARM64 architecture
 - Spinner does not show on some devices running Android 11. Should work again on Android 12
 - On some games, menu is using old layout such as Kitkat or Gingerbread when launched without permission. We have not found a way to fix it.
 
-# Download
-Download this repo as ZIP, or clone using any git tools
-
-Or download Releases here https://github.com/LGLTeam/Android-Mod-Menu/releases
-
 # Getting started
  **with overlay permission**
 invoke-static {p0}, Lnet/shayne/mod/menu/Main;->Start(Landroid/content/Context;)V
