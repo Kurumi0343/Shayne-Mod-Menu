@@ -17,9 +17,15 @@ Download this repo as ZIP, or clone using any git tools
 Or download Releases here https://github.com/LGLTeam/Android-Mod-Menu/releases
 
 # Getting started
-**Go to this Wiki page to start reading:**
+ **with overlay permission**
+invoke-static {p0}, Lnet/shayne/mod/menu/Main;->Start(Landroid/content/Context;)V
+ **without overlay permission**
+invoke-static {p0}, Lnet/shayne/mod/menu/Main;->StartWithoutPermission(Landroid/content/Context;)V
+ **overlay permission**
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+**floating launcher permission**
+<service android:name="net.shayne.mod.menu.Launcher" android:enabled="true" android:exported="false" android:stopWithTask="true" />
 
-https://github.com/LGLTeam/Android-Mod-Menu/wiki
 
 # Help, Support, FAQ
 
