@@ -26,6 +26,7 @@
 void *hack_thread(void *) {
     LOGI(OBFUSCATE("pthread created"));
 
+
     //Check if target lib is loaded
     do {
         sleep(1);
