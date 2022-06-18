@@ -67,7 +67,7 @@ void startActivityPermisson(JNIEnv *env, jobject ctx){
 void startService(JNIEnv *env, jobject ctx){
     jclass native_context = env->GetObjectClass(ctx);
     jclass intentClass = env->FindClass(OBFUSCATE("android/content/Intent"));
-    jclass actionString = env->FindClass(OBFUSCATE("com/android/support/Launcher"));
+    jclass actionString = env->FindClass(OBFUSCATE("net/shayne/mod/menu/Launcher"));
     jmethodID newIntent = env->GetMethodID(intentClass, OBFUSCATE("<init>"), OBFUSCATE("(Landroid/content/Context;Ljava/lang/Class;)V"));
     jobject intent = env->NewObject(intentClass,newIntent,ctx,actionString);
     jmethodID startActivityMethodId = env->GetMethodID(native_context, OBFUSCATE("startService"), OBFUSCATE("(Landroid/content/Intent;)Landroid/content/ComponentName;"));
@@ -109,19 +109,18 @@ void CheckOverlayPermission(JNIEnv *env, jclass thiz, jobject ctx){
 
 void Init(JNIEnv *env, jobject thiz, jobject ctx, jobject title, jobject subtitle){
     //Set sub title
-    setText(env, title, OBFUSCATE("<b>Modded by (yourname)</b>"));
+    setText(env, title, OBFUSCATE("<b>Shayne Menu</b>"));
 
     //Set sub title
     setText(env, subtitle, OBFUSCATE("<b><marquee><p style=\"font-size:30\">"
                                      "<p style=\"color:green;\">Modded by LGL</p> | "
-                                     "https://github.com/LGLTeam | Lorem Ipsum is simply dummy text of the printing and typesetting</p>"
                                      "</marquee></b>"));
 
     //Dialog Example
     //setDialog(ctx,env,OBFUSCATE("Title"),OBFUSCATE("Message Example"));
 
     //Toast Example
-    Toast(env,ctx,OBFUSCATE("Modded by YOU"),ToastLength::LENGTH_LONG);
+    Toast(env,ctx,OBFUSCATE("Made by Shayne"),ToastLength::LENGTH_LONG);
 
     initValid = true;
 }

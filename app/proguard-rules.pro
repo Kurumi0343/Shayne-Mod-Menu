@@ -23,4 +23,4 @@
 -keepclassmembers class ** {
    public static void Start (***);
 }
--keep public class com.android.support.MainActivity
+-keep public class net.shayne.mod.menu.MainActivity

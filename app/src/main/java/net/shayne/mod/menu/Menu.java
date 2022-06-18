@@ -1,11 +1,15 @@
 //Please don't replace listeners with lambda!
 
-package com.android.support;
+package net.shayne.mod.menu;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static android.widget.RelativeLayout.ALIGN_PARENT_LEFT;
+import static android.widget.RelativeLayout.ALIGN_PARENT_RIGHT;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -57,18 +61,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.widget.RelativeLayout.ALIGN_PARENT_LEFT;
-import static android.widget.RelativeLayout.ALIGN_PARENT_RIGHT;
-
-import org.xml.sax.ErrorHandler;
-
 public class Menu {
     //********** Here you can easly change the menu appearance **********//
 
     //region Variable
-    public static final String TAG = "Mod_Menu"; //Tag for logcat
+    public static final String TAG = "Shayne_Menu"; //Tag for logcat
 
     int TEXT_COLOR = Color.parseColor("#82CAFD");
     int TEXT_COLOR_2 = Color.parseColor("#FFFFFF");
@@ -105,19 +102,6 @@ public class Menu {
     ScrollView scrollView;
     boolean stopChecking, overlayRequired;
     Context getContext;
-
-    //initialize methods from the native library
-    native void Init(Context context, TextView title, TextView subTitle);
-
-    native String Icon();
-
-    native String IconWebViewData();
-
-    native String[] GetFeatureList();
-
-    native String[] SettingsList();
-
-    native boolean IsGameLibLoaded();
 
     //Here we write the code for our Menu
     // Reference: https://www.androidhive.info/2016/11/android-floating-widget-like-facebook-chat-head/
@@ -320,6 +304,19 @@ public class Menu {
         Init(context, title, subTitle);
     }
 
+    //initialize methods from the native library
+    native void Init(Context context, TextView title, TextView subTitle);
+
+    native String Icon();
+
+    native String IconWebViewData();
+
+    native String[] GetFeatureList();
+
+    native String[] SettingsList();
+
+    native boolean IsGameLibLoaded();
+
     public void ShowMenu() {
         rootFrame.addView(mRootContainer);
 
@@ -356,7 +353,7 @@ public class Menu {
         vmParams.x = POS_X;
         vmParams.y = POS_Y;
 
-        mWindowManager = (WindowManager) getContext.getSystemService(getContext.WINDOW_SERVICE);
+        mWindowManager = (WindowManager) getContext.getSystemService(Context.WINDOW_SERVICE);
         mWindowManager.addView(rootFrame, vmParams);
 
         overlayRequired = true;
@@ -760,7 +757,7 @@ public class Menu {
                 editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
-                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(getContext.INPUT_METHOD_SERVICE);
+                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (hasFocus) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                         } else {
@@ -801,7 +798,7 @@ public class Menu {
                 alertName.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         // dialog.cancel(); // closes dialog
-                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(getContext.INPUT_METHOD_SERVICE);
+                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                     }
                 });
@@ -843,7 +840,7 @@ public class Menu {
                 editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
-                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(getContext.INPUT_METHOD_SERVICE);
+                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (hasFocus) {
                             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                         } else {
@@ -872,7 +869,7 @@ public class Menu {
                 alertName.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         //dialog.cancel(); // closes dialog
-                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(getContext.INPUT_METHOD_SERVICE);
+                        InputMethodManager imm = (InputMethodManager) getContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                     }
                 });

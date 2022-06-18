@@ -1,4 +1,4 @@
-package com.android.support;
+package net.shayne.mod.menu;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -9,11 +9,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Preferences {
-    private static SharedPreferences sharedPreferences;
-    private static Preferences prefsInstance;
-    public static Context context;
-    public static boolean loadPref, isExpanded;
-
     private static final String LENGTH = "_length";
     private static final String DEFAULT_STRING_VALUE = "";
     private static final int DEFAULT_INT_VALUE = 0; //-1
@@ -21,6 +16,24 @@ public class Preferences {
     private static final float DEFAULT_FLOAT_VALUE = 0f; //-1f
     private static final long DEFAULT_LONG_VALUE = 0L; //-1L
     private static final boolean DEFAULT_BOOLEAN_VALUE = false;
+    public static Context context;
+    public static boolean loadPref, isExpanded;
+    private static SharedPreferences sharedPreferences;
+    private static Preferences prefsInstance;
+
+    private Preferences(Context context) {
+        sharedPreferences = context.getApplicationContext().getSharedPreferences(
+                context.getPackageName() + "_preferences",
+                Context.MODE_PRIVATE
+        );
+    }
+
+    private Preferences(Context context, String preferencesName) {
+        sharedPreferences = context.getApplicationContext().getSharedPreferences(
+                preferencesName,
+                Context.MODE_PRIVATE
+        );
+    }
 
     public static native void Changes(Context con, int fNum, String fName, int i, boolean bool, String str);
 
@@ -71,20 +84,6 @@ public class Preferences {
             return str;
         }
         return "";
-    }
-
-    private Preferences(Context context) {
-        sharedPreferences = context.getApplicationContext().getSharedPreferences(
-                context.getPackageName() + "_preferences",
-                Context.MODE_PRIVATE
-        );
-    }
-
-    private Preferences(Context context, String preferencesName) {
-        sharedPreferences = context.getApplicationContext().getSharedPreferences(
-                preferencesName,
-                Context.MODE_PRIVATE
-        );
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.android.support;
+package net.shayne.mod.menu;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,14 +34,14 @@ public class MainActivity extends Activity {
                 Main.Start(this);
                 return;
             } catch (ClassNotFoundException e) {
-                Log.e("Mod_menu", "Error. Game's main activity does not exist");
+                Log.e("Shayne_menu", "Error. Game's main activity does not exist");
                 //Uncomment this if you are following METHOD 2 to launch menu
                 //Toast.makeText(MainActivity.this, "Error. Game's main activity does not exist", Toast.LENGTH_LONG).show();
             }
         }
 
         //Launch mod menu.
-       // Main.StartWithoutPermission(this);
+        // Main.StartWithoutPermission(this);
         Main.Start(this);
     }
 }

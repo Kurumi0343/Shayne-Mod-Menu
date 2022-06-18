@@ -1,4 +1,4 @@
-package com.android.support;
+package net.shayne.mod.menu;
 
 import android.app.ActivityManager;
 import android.app.Service;
@@ -24,7 +24,7 @@ public class Launcher extends Service {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             public void run() {
-               Thread();
+                Thread();
                 handler.postDelayed(this, 1000);
             }
         });
